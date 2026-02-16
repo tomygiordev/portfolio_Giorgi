@@ -23,22 +23,22 @@ const HeroSlide = ({ onAboutClick }: HeroSlideProps) => {
 
         {/* Left content */}
         <motion.div
-          className="space-y-7"
+          className="space-y-8"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.05, ease: "easeOut" }}
           viewport={{ once: true }}
         >
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1] text-center md:text-left">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.2] text-center md:text-left">
             <span className="text-white">Tomás Roldán </span>
             <span className="violet-gradient-text">Giorgi</span>
           </h1>
 
-          <p className="text-[15px] md:text-[16px] text-white/50 leading-[1.] max-w-xl text-center md:text-left mx-auto md:mx-0">
+          <p className="text-[15px] md:text-[16px] text-white/50 leading-relaxed max-w-xl text-center md:text-left mx-auto md:mx-0">
             {t.hero.description}
           </p>
 
-          <div className="flex flex-wrap justify-center md:justify-start gap-2 pt-1">
+          <div className="flex flex-wrap justify-center md:justify-start gap-3 pt-2">
             <button
               onClick={onAboutClick}
               className="icon-btn"
