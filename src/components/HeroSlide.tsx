@@ -14,8 +14,8 @@ const HeroSlide = ({ onAboutClick }: HeroSlideProps) => {
   const { language, setLanguage, t } = useLanguage();
 
   const cvLink = language === 'es'
-    ? "/cv_tomas_roldan_giorgi.html"
-    : "/cv_tomas_roldan_giorgi_english.html";
+    ? "/CV_Tomas_Roldan_Giorgi_Sistemas.pdf"
+    : "/CV_Tomas_Roldan_Giorgi_ENG.pdf";
 
   return (
     <section className="slide-section flex items-center justify-center py-20 md:py-0 relative">
