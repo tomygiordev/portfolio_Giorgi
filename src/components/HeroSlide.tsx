@@ -86,11 +86,16 @@ const HeroSlide = ({ onAboutClick }: HeroSlideProps) => {
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
         >
-          <div className="profile-circle transition-all duration-100 hover:scale-105">
+          <div className="profile-circle transition-all duration-100 hover:scale-105 relative">
             <img
-              src={isHovered ? profilePink : profileNormal}
+              src={profileNormal}
               alt="Tomás Roldán Giorgi"
-              className="w-full h-full object-cover transition-opacity duration-100"
+              className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-300 ${isHovered ? "opacity-0" : "opacity-100"}`}
+            />
+            <img
+              src={profilePink}
+              alt="Tomás Roldán Giorgi (Hover)"
+              className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-300 ${isHovered ? "opacity-100" : "opacity-0"}`}
             />
           </div>
         </motion.div>
