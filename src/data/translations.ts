@@ -13,6 +13,7 @@ export const translations = {
             title: "Sobre mí",
             experience: {
                 title: "Experiencia",
+                current: "Actual",
                 items: [
                     {
                         title: "Desarrollador Freelance",
@@ -149,6 +150,7 @@ export const translations = {
             title: "About Me",
             experience: {
                 title: "Experience",
+                current: "Current",
                 items: [
                     {
                         title: "Freelance Developer",

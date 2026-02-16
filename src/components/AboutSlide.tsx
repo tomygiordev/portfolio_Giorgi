@@ -21,16 +21,16 @@ import {
 import { useLanguage } from "../context/LanguageContext";
 
 const techStack = [
-    { name: "C++", color: "from-blue-400 to-blue-600", icon: SiCplusplus },
-    { name: "SQL", color: "from-orange-400 to-orange-600", icon: SiMysql },
-    { name: "PHP", color: "from-indigo-400 to-indigo-600", icon: SiPhp },
-    { name: "HTML", color: "from-red-400 to-red-500", icon: SiHtml5 },
-    { name: ".NET", color: "from-violet-400 to-purple-600", icon: SiDotnet },
-    { name: "PostgreSQL", color: "from-sky-400 to-blue-600", icon: SiPostgresql },
-    { name: "React", color: "from-cyan-300 to-cyan-500", icon: SiReact },
-    { name: "Tailwind", color: "from-teal-300 to-teal-500", icon: SiTailwindcss },
-    { name: "Docker", color: "from-blue-300 to-blue-500", icon: SiDocker },
-    { name: "Git", color: "from-orange-300 to-red-500", icon: SiGit },
+    { name: "C++", icon: SiCplusplus },
+    { name: "SQL", icon: SiMysql },
+    { name: "PHP", icon: SiPhp },
+    { name: "HTML", icon: SiHtml5 },
+    { name: ".NET", icon: SiDotnet },
+    { name: "PostgreSQL", icon: SiPostgresql },
+    { name: "React", icon: SiReact },
+    { name: "Tailwind", icon: SiTailwindcss },
+    { name: "Docker", icon: SiDocker },
+    { name: "Git", icon: SiGit },
 ];
 
 interface AboutSlideProps {
@@ -46,86 +46,112 @@ const AboutSlide = ({ onNavigate }: AboutSlideProps) => {
 
     return (
         <section id="about" className="slide-section">
-            <div className="w-full h-full overflow-y-auto">
-                <div className="w-full max-w-6xl mx-auto px-8 md:px-16 py-16 md:py-20">
+            <div className="w-full h-full flex items-start md:items-center justify-center overflow-y-auto">
+                <div className="w-full max-w-6xl mx-auto px-6 md:px-16 py-20 md:py-0">
                     <motion.div
                         initial={{ opacity: 0, y: 15 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.4, ease: "easeOut" }}
                         viewport={{ once: true }}
-                        className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-5"
+                        className="grid grid-cols-1 lg:grid-cols-12 gap-4 md:gap-4 lg:gap-4 pb-24 md:pb-0"
                     >
-                        {/* Bio - Spans 2 rows on desktop */}
-                        <div className="lg:col-span-7 lg:row-span-2 bento-card p-6 md:p-7 flex flex-col justify-center">
-                            <h2 className="text-2xl md:text-3xl font-bold text-white mb-4 md:mb-5 tracking-tight">
-                                {titleParts.start} <span className="violet-gradient-text">{titleParts.highlight}</span>
-                            </h2>
-                            <p className="text-[13px] md:text-[15px] text-white/55 leading-[1.75] mb-3 md:mb-4">
-                                {language === 'es'
-                                    ? "Tengo 20 años y estoy terminando la carrera de Análisis de Sistemas. En la facultad mi base fue C++, SQL, PHP y HTML, pero por curiosidad propia me metí de lleno en .NET, PostgreSQL, React, Tailwind y Docker. Incluso sumé una certificación de Cisco en Ciberseguridad para entender mejor la protección de datos."
-                                    : "I am 20 years old and finishing my Systems Analysis degree. At university, my foundation was C++, SQL, PHP, and HTML, but out of my own curiosity, I dove deep into .NET, PostgreSQL, React, Tailwind, and Docker. I even added a Cisco Cybersecurity certification to better understand data protection."
-                                }
-                            </p>
-                            <p className="text-[13px] md:text-[15px] text-white/55 leading-[1.75]">
-                                {language === 'es'
-                                    ? "Me considero más que un programador: soy un arquitecto de sistemas. Me apasiona analizar los problemas desde cero y tengo muy buen criterio para resolverlos. Mi fuerte es la rápida adaptación; me desenvuelvo en cualquier contexto y siempre busco ampliar mi stack según el desafío lo requiera."
-                                    : "I consider myself more than just a programmer: I am a systems architect. I am passionate about analyzing problems from scratch and have excellent judgment for solving them. My strength is rapid adaptation; I thrive in any context and always seek to expand my stack as the challenge requires."
-                                }
-                            </p>
+                        {/* Bio + Tech Stack combined — left column */}
+                        <div className="lg:col-span-7 lg:row-span-2 bento-card p-6 md:p-7 flex flex-col justify-between">
+                            <div>
+                                <h2 className="text-3xl md:text-3xl font-bold text-white mb-4 tracking-tight">
+                                    {titleParts.start} <span className="violet-gradient-text">{titleParts.highlight}</span>
+                                </h2>
+                                <p className="text-[14px] md:text-[14px] text-white/55 leading-[1.7] mb-3">
+                                    {language === 'es'
+                                        ? "Tengo 20 años y estoy terminando la carrera de Análisis de Sistemas. En la facultad mi base fue C++, SQL, PHP y HTML, pero por curiosidad propia me metí de lleno en .NET, PostgreSQL, React, Tailwind y Docker. Incluso sumé una certificación de Cisco en Ciberseguridad para entender mejor la protección de datos."
+                                        : "I am 20 years old and finishing my Systems Analysis degree. At university, my foundation was C++, SQL, PHP, and HTML, but out of my own curiosity, I dove deep into .NET, PostgreSQL, React, Tailwind, and Docker. I even added a Cisco Cybersecurity certification to better understand data protection."
+                                    }
+                                </p>
+                                <p className="text-[14px] md:text-[14px] text-white/55 leading-[1.7]">
+                                    {language === 'es'
+                                        ? "Me considero más que un programador: soy un arquitecto de sistemas. Me apasiona analizar los problemas desde cero y tengo muy buen criterio para resolverlos. Mi fuerte es la rápida adaptación; me desenvuelvo en cualquier contexto y siempre busco ampliar mi stack según el desafío lo requiera."
+                                        : "I consider myself more than just a programmer: I am a systems architect. I am passionate about analyzing problems from scratch and have excellent judgment for solving them. My strength is rapid adaptation; I thrive in any context and always seek to expand my stack as the challenge requires."
+                                    }
+                                </p>
+                            </div>
+
+                            {/* Tech Stack — integrated into bio card */}
+                            <div className="mt-6 pt-5 border-t border-white/[0.06]">
+                                <h3 className="text-[11px] md:text-xs font-bold uppercase tracking-[0.2em] violet-gradient-text mb-3">
+                                    {language === 'es' ? "Stack Tecnológico" : "Tech Stack"}
+                                </h3>
+                                <div className="flex flex-wrap gap-2 md:gap-2">
+                                    {techStack.map((tech) => (
+                                        <span
+                                            key={tech.name}
+                                            className="inline-flex items-center gap-1.5 px-3 py-1.5 md:px-3 md:py-1.5 text-[11px] md:text-[11px] font-bold tracking-wide rounded-lg bg-white/[0.04] border border-white/[0.06] text-white/70 hover:text-white hover:border-white/15 transition-all duration-300"
+                                        >
+                                            <tech.icon size={13} className="text-current opacity-70" />
+                                            {tech.name}
+                                        </span>
+                                    ))}
+                                </div>
+                            </div>
                         </div>
 
-                        {/* Experience */}
-                        <div className="lg:col-span-5 bento-card p-5 md:p-6">
-                            <h3 className="text-xs font-bold uppercase tracking-[0.2em] violet-gradient-text mb-3 md:mb-4">
+                        {/* Experience — top right */}
+                        <div className="lg:col-span-5 bento-card p-6 md:p-6">
+                            <h3 className="text-[11px] md:text-xs font-bold uppercase tracking-[0.2em] violet-gradient-text mb-4 md:mb-4">
                                 {t.about.experience.title}
                             </h3>
-                            <div className="space-y-3 md:space-y-4">
+                            <div className="space-y-4">
                                 <div className="flex items-start gap-3">
-                                    <div className="w-8 h-8 md:w-9 md:h-9 rounded-xl bg-amber-500/15 border border-amber-500/20 flex items-center justify-center flex-shrink-0 mt-0.5">
-                                        <Briefcase size={14} className="text-amber-400 md:w-4 md:h-4" />
+                                    <div className="w-9 h-9 md:w-9 md:h-9 rounded-xl bg-amber-500/15 border border-amber-500/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                        <Briefcase size={16} className="text-amber-400 md:w-4 md:h-4" />
                                     </div>
                                     <div className="min-w-0">
-                                        <p className="text-[13px] md:text-[14px] font-semibold text-white">
+                                        <p className="text-[14px] font-semibold text-white flex items-center gap-2">
                                             WP Steel Frame
+                                            <span className="text-[9px] px-1.5 py-0.5 rounded-md bg-amber-500/20 text-amber-400 border border-amber-500/30 font-bold uppercase tracking-wider">
+                                                {t.about.experience.current}
+                                            </span>
                                         </p>
-                                        <p className="text-[11px] md:text-[12px] text-white/40 mt-0.5 leading-relaxed">
+                                        <p className="text-[12px] md:text-[12px] text-white/40 mt-0.5 leading-relaxed">
                                             {t.about.experience.items[0].description}
                                         </p>
-                                        <div className="flex flex-wrap gap-x-3 gap-y-1 mt-1.5">
+                                        <div className="flex flex-wrap gap-x-3 gap-y-1 mt-2">
                                             <button
                                                 onClick={() => onNavigate?.(2)}
-                                                className="inline-flex items-center gap-1 text-[10px] md:text-[11px] font-medium text-amber-400 hover:text-amber-300 transition-colors"
+                                                className="inline-flex items-center gap-1 text-[11px] md:text-[11px] font-medium text-amber-400 hover:text-amber-300 transition-colors"
                                             >
-                                                <ArrowUpRight size={10} />
+                                                <ArrowUpRight size={11} />
                                                 {language === 'es' ? "Diseño Web" : "Web Design"}
                                             </button>
                                             <button
                                                 onClick={() => onNavigate?.(1)}
-                                                className="inline-flex items-center gap-1 text-[10px] md:text-[11px] font-medium text-amber-400 hover:text-amber-300 transition-colors"
+                                                className="inline-flex items-center gap-1 text-[11px] md:text-[11px] font-medium text-amber-400 hover:text-amber-300 transition-colors"
                                             >
-                                                <ArrowUpRight size={10} />
+                                                <ArrowUpRight size={11} />
                                                 {language === 'es' ? "Gestión de Sistema" : "System Management"}
                                             </button>
                                         </div>
                                     </div>
                                 </div>
                                 <div className="flex items-start gap-3">
-                                    <div className="w-8 h-8 md:w-9 md:h-9 rounded-xl bg-sky-500/15 border border-sky-500/20 flex items-center justify-center flex-shrink-0 mt-0.5">
-                                        <Briefcase size={14} className="text-sky-400 md:w-4 md:h-4" />
+                                    <div className="w-9 h-9 md:w-9 md:h-9 rounded-xl bg-sky-500/15 border border-sky-500/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                        <Briefcase size={16} className="text-sky-400 md:w-4 md:h-4" />
                                     </div>
                                     <div className="min-w-0">
-                                        <p className="text-[13px] md:text-[14px] font-semibold text-white">
+                                        <p className="text-[14px] font-semibold text-white flex items-center gap-2">
                                             GeoCimenta
+                                            <span className="text-[9px] px-1.5 py-0.5 rounded-md bg-sky-500/20 text-sky-400 border border-sky-500/30 font-bold uppercase tracking-wider">
+                                                {t.about.experience.current}
+                                            </span>
                                         </p>
-                                        <p className="text-[11px] md:text-[12px] text-white/40 mt-0.5 leading-relaxed">
+                                        <p className="text-[12px] md:text-[12px] text-white/40 mt-0.5 leading-relaxed">
                                             {language === 'es' ? "App de Seguimiento de Pilotes. Diseñé toda la arquitectura desde cero para registro en tiempo real." : "Pile Tracking App. I designed the entire architecture from scratch for real-time logging."}
                                         </p>
-                                        <div className="mt-1.5">
+                                        <div className="mt-2">
                                             <button
                                                 onClick={() => onNavigate?.(5)}
-                                                className="inline-flex items-center gap-1 text-[10px] md:text-[11px] font-medium text-sky-400 hover:text-sky-300 transition-colors"
+                                                className="inline-flex items-center gap-1 text-[11px] md:text-[11px] font-medium text-sky-400 hover:text-sky-300 transition-colors"
                                             >
-                                                <ArrowUpRight size={10} />
+                                                <ArrowUpRight size={11} />
                                                 {language === 'es' ? "Ver App" : "View App"}
                                             </button>
                                         </div>
@@ -134,40 +160,40 @@ const AboutSlide = ({ onNavigate }: AboutSlideProps) => {
                             </div>
                         </div>
 
-                        {/* Education */}
-                        <div className="lg:col-span-5 bento-card p-5 md:p-6">
-                            <h3 className="text-xs font-bold uppercase tracking-[0.2em] violet-gradient-text mb-3 md:mb-5">
+                        {/* Education — bottom right */}
+                        <div className="lg:col-span-5 bento-card p-6 md:p-6">
+                            <h3 className="text-[11px] md:text-xs font-bold uppercase tracking-[0.2em] violet-gradient-text mb-4 md:mb-4">
                                 {t.about.education.title}
                             </h3>
-                            <div className="space-y-3 md:space-y-4">
+                            <div className="space-y-4">
                                 <div className="flex items-start gap-3">
-                                    <div className="w-8 h-8 md:w-9 md:h-9 rounded-xl violet-gradient-bg flex items-center justify-center flex-shrink-0 mt-0.5">
+                                    <div className="w-9 h-9 md:w-9 md:h-9 rounded-xl violet-gradient-bg flex items-center justify-center flex-shrink-0 mt-0.5">
                                         <GraduationCap size={16} className="text-white" />
                                     </div>
                                     <div>
-                                        <p className="text-[13px] md:text-[14px] font-semibold text-white">
+                                        <p className="text-[14px] md:text-[14px] font-semibold text-white">
                                             {language === 'es' ? "Análisis de Sistemas" : "Systems Analysis"}
                                         </p>
-                                        <p className="text-[11px] md:text-[12px] text-white/40 mt-0.5">
+                                        <p className="text-[12px] md:text-[12px] text-white/40 mt-0.5">
                                             {language === 'es' ? "FCYT UADER — Cursando etapa final" : "FCYT UADER — Final stage"}
                                         </p>
                                     </div>
                                 </div>
                                 <div className="flex items-start gap-3">
-                                    <div className="w-8 h-8 md:w-9 md:h-9 rounded-xl bg-emerald-500/15 border border-emerald-500/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                    <div className="w-9 h-9 md:w-9 md:h-9 rounded-xl bg-emerald-500/15 border border-emerald-500/20 flex items-center justify-center flex-shrink-0 mt-0.5">
                                         <ShieldCheck size={16} className="text-emerald-400" />
                                     </div>
                                     <div>
-                                        <p className="text-[13px] md:text-[14px] font-semibold text-white">
+                                        <p className="text-[14px] md:text-[14px] font-semibold text-white">
                                             Junior Cybersecurity Analyst
                                         </p>
                                         <div className="flex items-center gap-2 mt-0.5">
-                                            <p className="text-[11px] md:text-[12px] text-white/40">Cisco</p>
+                                            <p className="text-[12px] md:text-[12px] text-white/40">Cisco</p>
                                             <a
                                                 href="https://www.credly.com/badges/408e4626-6713-406b-9360-40b469327d83/public_url"
                                                 target="_blank"
                                                 rel="noopener noreferrer"
-                                                className="inline-flex items-center gap-1 text-[10px] md:text-[11px] font-medium text-emerald-400 hover:text-emerald-300 transition-colors"
+                                                className="inline-flex items-center gap-1 text-[11px] md:text-[11px] font-medium text-emerald-400 hover:text-emerald-300 transition-colors"
                                             >
                                                 <ExternalLink size={10} />
                                                 {language === 'es' ? "Verificar credencial" : "Verify credential"}
@@ -175,24 +201,6 @@ const AboutSlide = ({ onNavigate }: AboutSlideProps) => {
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-
-                        {/* Tech Stack - Full width bottom */}
-                        <div className="lg:col-span-12 bento-card p-5 md:p-6 mt-1 mb-8">
-                            <h3 className="text-xs font-bold uppercase tracking-[0.2em] violet-gradient-text mb-3 md:mb-4">
-                                {language === 'es' ? "Stack Tecnológico" : "Tech Stack"}
-                            </h3>
-                            <div className="flex flex-wrap gap-2">
-                                {techStack.map((tech) => (
-                                    <span
-                                        key={tech.name}
-                                        className="inline-flex items-center gap-1.5 px-2.5 py-1 md:px-3 md:py-1.5 text-[10px] md:text-[11px] font-bold tracking-wide rounded-lg bg-white/[0.04] border border-white/[0.06] text-white/70 hover:text-white hover:border-white/15 transition-all duration-300"
-                                    >
-                                        <tech.icon size={12} className="text-current opacity-70" />
-                                        {tech.name}
-                                    </span>
-                                ))}
                             </div>
                         </div>
                     </motion.div>

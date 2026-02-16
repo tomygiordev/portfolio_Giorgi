@@ -5,9 +5,6 @@ import profileNormal from "@/assets/perfil.png";
 import profilePink from "@/assets/perfil-violeta.png";
 import { useLanguage } from "../context/LanguageContext";
 
-// The CV will be placed in the public folder for direct access
-const cvLink = "/cv_tomas_roldan_giorgi_english.html";
-
 interface HeroSlideProps {
   onAboutClick?: () => void;
 }
@@ -15,6 +12,10 @@ interface HeroSlideProps {
 const HeroSlide = ({ onAboutClick }: HeroSlideProps) => {
   const [isHovered, setIsHovered] = useState(false);
   const { language, setLanguage, t } = useLanguage();
+
+  const cvLink = language === 'es'
+    ? "/cv_tomas_roldan_giorgi.html"
+    : "/cv_tomas_roldan_giorgi_english.html";
 
   return (
     <section className="slide-section flex items-center justify-center py-20 md:py-0 relative">
