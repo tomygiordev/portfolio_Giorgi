@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Linkedin, Github, FileText, User } from "lucide-react";
 import profileNormal from "@/assets/perfil.png";
 import profilePink from "@/assets/perfil-violeta.png";
+import { useLanguage } from "../context/LanguageContext";
 
 // The CV will be placed in the public folder for direct access
 const cvLink = "/cv_tomas_roldan_giorgi_english.html";
@@ -13,10 +14,12 @@ interface HeroSlideProps {
 
 const HeroSlide = ({ onAboutClick }: HeroSlideProps) => {
   const [isHovered, setIsHovered] = useState(false);
+  const { language, setLanguage, t } = useLanguage();
 
   return (
-    <section className="slide-section flex items-center justify-center py-20 md:py-0">
+    <section className="slide-section flex items-center justify-center py-20 md:py-0 relative">
       <div className="w-full max-w-6xl mx-auto px-10 md:px-16 flex flex-col-reverse md:flex-row items-center justify-center gap-12 md:gap-20">
+
         {/* Left content */}
         <motion.div
           className="space-y-7"
@@ -31,10 +34,7 @@ const HeroSlide = ({ onAboutClick }: HeroSlideProps) => {
           </h1>
 
           <p className="text-[15px] md:text-[16px] text-white/50 leading-[1.] max-w-xl text-center md:text-left mx-auto md:mx-0">
-            Desarrollador web y desktop junior con enfoque en el diseño de sistemas,
-            la resolución de problemas y la creación de estructuras sólidas.
-            Combino habilidades de comunicación clara con un pensamiento
-            arquitectónico para transformar necesidades en soluciones técnicas eficientes.
+            {t.hero.description}
           </p>
 
           <div className="flex flex-wrap justify-center md:justify-start gap-2 pt-1">
@@ -43,7 +43,7 @@ const HeroSlide = ({ onAboutClick }: HeroSlideProps) => {
               className="icon-btn"
             >
               <User size={18} className="md:w-[23px] md:h-[23px]" />
-              <span>Sobre mí</span>
+              <span>{t.hero.buttons.about}</span>
             </button>
             <a
               href="https://www.linkedin.com/in/tom%C3%A1sroldangiorgi/"
@@ -70,7 +70,7 @@ const HeroSlide = ({ onAboutClick }: HeroSlideProps) => {
               className="icon-btn"
             >
               <FileText size={18} className="md:w-[23px] md:h-[23px]" />
-              <span>Currículum</span>
+              <span>{t.hero.buttons.curriculum}</span>
             </a>
           </div>
         </motion.div>

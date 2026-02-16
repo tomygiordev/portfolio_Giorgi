@@ -4,6 +4,8 @@ import HeroSlide from "./HeroSlide";
 import AboutSlide from "./AboutSlide";
 import ProjectSlide from "./ProjectSlide";
 import ScrollNav from "./ScrollNav";
+import { motion } from "framer-motion";
+import { LanguageProvider, useLanguage } from "../context/LanguageContext";
 
 // Project images
 import wpSteel1 from "@/assets/projects/wp-steel-1.jpg";
@@ -17,101 +19,77 @@ import wpWeb3 from "@/assets/projects/wp-web-3.jpg";
 import wpWeb4 from "@/assets/projects/wp-web-4.jpg";
 import wpWeb5 from "@/assets/projects/wp-web-5.jpg";
 import nictech1 from "@/assets/projects/nictech-1.jpg";
+import nictech2 from "@/assets/projects/nictech-2.jpg";
+import nictech3 from "@/assets/projects/nictech-3.jpg";
+import nictech4 from "@/assets/projects/nictech-4.jpg";
+import nictech5 from "@/assets/projects/nictech-5.jpg";
+import nictech6 from "@/assets/projects/nictech-6.jpg";
+import nictech7 from "@/assets/projects/nictech-7.jpg";
 import ritual1 from "@/assets/projects/ritual-1.jpg";
+import ritual2 from "@/assets/projects/ritual-2.jpg";
+import ritual3 from "@/assets/projects/ritual-3.jpg";
+import ritual4 from "@/assets/projects/ritual-4.jpg";
+import ritual5 from "@/assets/projects/ritual-5.jpg";
 import geocimenta1 from "@/assets/projects/geocimenta-1.jpg";
+import geocimenta2 from "@/assets/projects/geocimenta-2.jpg";
 import gatekeeper1 from "@/assets/projects/gatekeeper-1.jpg";
 
-const projects = [
+// Define a map of project technical details (stack, images, links) that shouldn't change with language
+// The text content (title, description, features) will come from translations based on index
+const projectDetails = [
   {
-    title: "WP Steel Frame Software",
-    description:
-      "Software de escritorio para gestión de inventario orientado a la industria del Steel Frame. Permite administrar materiales, stock y movimientos de forma eficiente.",
     techStack: [".NET", "WinForms", "Supabase"],
-    features: [
-      "Gestión de inventario",
-      "Control de stock",
-      "Reportes de movimientos",
-      "Interfaz desktop nativa",
-    ],
     images: [wpSteel1, wpSteel2, wpSteel3, wpSteel4, wpSteel5],
+    liveUrl: undefined,
+    githubUrl: undefined,
   },
   {
-    title: "WP STEEL FRAME WEB",
-    subtitle: "Sitio web corporativo",
-    description:
-      "Sitio web corporativo construido con Squarespace, personalizado con HTML, CSS y JavaScript. Cuenta con más de 5 subpáginas y branding profesional.",
     techStack: ["Squarespace", "HTML", "CSS", "JavaScript"],
-    features: [
-      "Más de 5 subpáginas",
-      "Branding profesional",
-      "Diseño responsive",
-      "Personalización custom",
-    ],
     images: [wpWeb1, wpWeb2, wpWeb3, wpWeb4, wpWeb5],
+    liveUrl: "https://www.wpconstrucciones.com/",
+    githubUrl: undefined,
   },
   {
-    title: "NicTech Store",
-    description:
-      "Plataforma e-commerce completa con landing page de marketing, tienda online, módulo de seguimiento de reparaciones y sección de blog.",
     techStack: ["React", "Tailwind CSS", "Supabase"],
-    features: [
-      "Landing page con marketing hooks",
-      "Tienda e-commerce",
-      "Módulo de seguimiento de reparaciones",
-      "Sección de blog",
-    ],
-    images: [nictech1],
+    images: [nictech1, nictech2, nictech3, nictech4, nictech5, nictech6, nictech7],
+    liveUrl: "https://nictech.netlify.app/",
+    githubUrl: "https://github.com/tomygiordev/nictech",
   },
   {
-    title: "RITUAL Red Social",
-    description:
-      "Plataforma de microblogging con funcionalidades sociales completas. Permite publicar, responder, personalizar perfiles y explorar usuarios.",
     techStack: ["PHP", "MySQL"],
-    role: "Responsable de todo el Frontend y colaboré en el desarrollo del Backend.",
-    features: [
-      "Publicaciones y respuestas",
-      "Personalización de perfil",
-      "Perfiles de usuario",
-      "Feed social",
-    ],
-    images: [ritual1],
+    images: [ritual1, ritual2, ritual3, ritual4, ritual5],
+    liveUrl: undefined,
+    githubUrl: "https://github.com/tomygiordev/ritual-red-social",
   },
   {
-    title: "AppGeoCimenta",
-    description:
-      "Aplicación de registro y automatización para el logging de pilotes. Automatiza el envío de notas de entrega en PDF por email.",
     techStack: ["AppSheet", "AppScript", "JavaScript"],
-    features: [
-      "Registro de pilotes",
-      "Automatización de PDFs",
-      "Envío por email",
-      "Logging en campo",
-    ],
-    images: [geocimenta1],
+    images: [geocimenta1, geocimenta2],
+    liveUrl: undefined,
+    githubUrl: undefined,
   },
   {
-    title: "myGatekeeper Game",
-    description:
-      "Juego de control fronterizo con temática de skate donde el jugador debe identificar y dejar pasar a los skaters genuinos.",
     techStack: ["QT", "C++"],
-    features: [
-      "Control fronterizo temático",
-      "Identificación de skaters",
-      "Mecánica de decisión",
-      "Interfaz gráfica QT",
-    ],
     images: [gatekeeper1],
+    liveUrl: undefined,
+    githubUrl: "https://github.com/tomygiordev/myGatekeeper",
   },
 ];
 
-const TOTAL_SLIDES = 2 + projects.length;
-
-const Portfolio = () => {
+const PortfolioContent = () => {
   const [emblaRef, emblaApi] = useEmblaCarousel({
     loop: true,
     duration: 35
   });
   const [currentSlide, setCurrentSlide] = useState(0);
+  const { language, setLanguage, t } = useLanguage();
+
+  // Combine static tech details with translated text content
+  const projects = t.projects.items.map((item, index) => ({
+    ...item,
+    ...projectDetails[index]
+  }));
+
+  const TOTAL_SLIDES = 2 + projects.length;
 
   const onSelect = useCallback(() => {
     if (!emblaApi) return;
@@ -149,7 +127,34 @@ const Portfolio = () => {
   }, [handleNext, handlePrev]);
 
   return (
-    <div className="relative h-screen bg-background overflow-hidden">
+    <div className="relative h-screen bg-background overflow-hidden text-white/50">
+      {/* Global Language Switcher */}
+      <div className="absolute top-6 right-6 md:top-10 md:right-10 z-[100]">
+        <div
+          className="relative flex items-center bg-white/10 rounded-full p-1 cursor-pointer w-[76px] h-[36px] border border-white/10 shadow-lg backdrop-blur-sm"
+          onClick={() => setLanguage(language === 'es' ? 'en' : 'es')}
+        >
+          {/* Sliding Pill */}
+          <motion.div
+            className="absolute top-1 bottom-1 bg-violet-600 rounded-full shadow-md z-10"
+            initial={false}
+            animate={{
+              left: language === 'es' ? 4 : 38,
+              width: 32
+            }}
+            transition={{ type: "spring", stiffness: 500, damping: 30 }}
+          />
+
+          {/* Text Labels */}
+          <div className={`flex-1 text-center text-[11px] font-bold z-20 transition-colors duration-300 ${language === 'es' ? 'text-white' : 'text-white/40'}`}>
+            ES
+          </div>
+          <div className={`flex-1 text-center text-[11px] font-bold z-20 transition-colors duration-300 ${language === 'en' ? 'text-white' : 'text-white/40'}`}>
+            EN
+          </div>
+        </div>
+      </div>
+
       <div className="h-full" ref={emblaRef}>
         <div className="flex h-full">
           {/* Hero Slide */}
@@ -159,7 +164,7 @@ const Portfolio = () => {
 
           {/* Project Slides */}
           {projects.map((project, i) => (
-            <div key={project.title} className="flex-[0_0_100%] min-w-0">
+            <div key={i} className="flex-[0_0_100%] min-w-0">
               <ProjectSlide {...project} index={i + 1} />
             </div>
           ))}
@@ -179,6 +184,14 @@ const Portfolio = () => {
         onNext={handleNext}
       />
     </div>
+  );
+};
+
+const Portfolio = () => {
+  return (
+    <LanguageProvider>
+      <PortfolioContent />
+    </LanguageProvider>
   );
 };
 
