@@ -59,7 +59,7 @@ const projectDetails = [
     techStack: ["PHP", "MySQL"],
     images: [ritual1, ritual2, ritual3, ritual4, ritual5],
     liveUrl: undefined,
-    githubUrl: "https://github.com/tomygiordev/ritual-red-social",
+    githubUrl: "https://github.com/tomygiordev/Ritual_Web",
   },
   {
     techStack: ["AppSheet", "AppScript", "JavaScript"],
