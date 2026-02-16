@@ -20,7 +20,7 @@ const HeroSlide = ({ onAboutClick }: HeroSlideProps) => {
   return (
     <section className="slide-section relative">
       <div className="w-full h-full flex items-start md:items-center justify-center overflow-y-auto">
-        <div className="w-full max-w-6xl mx-auto px-10 md:px-16 flex flex-col-reverse md:flex-row items-center justify-center gap-12 md:gap-20 py-20 md:py-0 pb-24 md:pb-0">
+        <div className="w-full max-w-6xl mx-auto px-10 md:px-16 flex flex-col-reverse md:flex-row items-center justify-center gap-12 md:gap-20 py-20 md:py-0 pb-48 md:pb-0">
 
           {/* Left content */}
           <motion.div
