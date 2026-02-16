@@ -256,7 +256,7 @@ const ProjectSlide = ({
 
   return (
     <>
-      <section className="slide-section flex items-start md:items-center justify-center py-20 md:py-0">
+      <section className="slide-section flex items-start md:items-center justify-center pt-24 pb-40 md:py-0">
         <div className="w-full max-w-7xl mx-auto px-10 md:px-20">
           <div className="project-card p-8 md:p-12 lg:p-16">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
