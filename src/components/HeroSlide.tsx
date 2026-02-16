@@ -18,7 +18,7 @@ const HeroSlide = ({ onAboutClick }: HeroSlideProps) => {
     : "/CV_Tomas_Roldan_Giorgi_ENG.pdf";
 
   return (
-    <section className="slide-section flex items-center justify-center py-20 md:py-0 relative">
+    <section className="slide-section flex items-center justify-center pt-20 pb-32 md:py-0 relative">
       <div className="w-full max-w-6xl mx-auto px-10 md:px-16 flex flex-col-reverse md:flex-row items-center justify-center gap-12 md:gap-20">
 
         {/* Left content */}
@@ -87,14 +87,16 @@ const HeroSlide = ({ onAboutClick }: HeroSlideProps) => {
           onMouseLeave={() => setIsHovered(false)}
         >
           <div className="profile-circle transition-all duration-100 hover:scale-105 relative">
+            {/* Normal image stays in flow to maintain container size */}
             <img
               src={profileNormal}
               alt="Tomás Roldán Giorgi"
-              className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-300 ${isHovered ? "opacity-0" : "opacity-100"}`}
+              className={`w-full h-full object-cover transition-opacity duration-300 ${isHovered ? "opacity-0" : "opacity-100"}`}
             />
+            {/* Hover image overlaid on top */}
             <img
               src={profilePink}
-              alt="Tomás Roldán Giorgi (Hover)"
+              alt="Tomás Roldán Giorgi"
               className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-300 ${isHovered ? "opacity-100" : "opacity-0"}`}
             />
           </div>
