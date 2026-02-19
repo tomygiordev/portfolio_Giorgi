@@ -7,7 +7,8 @@ export const translations = {
             buttons: {
                 curriculum: "Currículum",
                 about: "Sobre mí"
-            }
+            },
+            cvLink: "/CV_Tomas_Roldan_Giorgi_Sistemas.pdf"
         },
         about: {
             title: "Sobre mí",
@@ -144,7 +145,8 @@ export const translations = {
             buttons: {
                 curriculum: "Resume",
                 about: "About Me"
-            }
+            },
+            cvLink: "/CV_Tomas_Roldan_Giorgi_ENG.pdf"
         },
         about: {
             title: "About Me",

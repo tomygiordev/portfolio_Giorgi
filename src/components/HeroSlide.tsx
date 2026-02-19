@@ -13,9 +13,7 @@ const HeroSlide = ({ onAboutClick }: HeroSlideProps) => {
   const [isHovered, setIsHovered] = useState(false);
   const { language, setLanguage, t } = useLanguage();
 
-  const cvLink = language === 'es'
-    ? "/CV_Tomas_Roldan_Giorgi_Sistemas.pdf"
-    : "/CV_Tomas_Roldan_Giorgi_ENG.pdf";
+  const cvLink = t.hero.cvLink;
 
   return (
     <section className="slide-section relative">

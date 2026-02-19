@@ -1,4 +1,4 @@
-import { useState, useCallback, useEffect } from "react";
+import { useState, useCallback, useEffect, useRef } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import HeroSlide from "./HeroSlide";
 import AboutSlide from "./AboutSlide";
@@ -52,7 +52,7 @@ const projectDetails = [
   {
     techStack: ["React", "Tailwind CSS", "Supabase"],
     images: [nictech1, nictech2, nictech3, nictech4, nictech5, nictech6, nictech7],
-    liveUrl: "https://nictech.netlify.app/",
+    liveUrl: "https://nictech.vercel.app/",
     githubUrl: "https://github.com/tomygiordev/nictech",
   },
   {
@@ -124,6 +124,43 @@ const PortfolioContent = () => {
     };
     window.addEventListener("keydown", handleKey);
     return () => window.removeEventListener("keydown", handleKey);
+  }, [handleNext, handlePrev]);
+
+  // Wheel scroll navigation between slides
+  const wheelCooldown = useRef(false);
+  useEffect(() => {
+    const handleWheel = (e: WheelEvent) => {
+      // Don't hijack scroll if user is scrolling inside an overflow container
+      const target = e.target as HTMLElement;
+      if (target.closest('.overflow-y-auto')) {
+        const scrollable = target.closest('.overflow-y-auto') as HTMLElement;
+        const isAtTop = scrollable.scrollTop === 0;
+        const isAtBottom = scrollable.scrollTop + scrollable.clientHeight >= scrollable.scrollHeight - 2;
+        // Only intercept if at the edges of the scrollable area
+        if ((e.deltaY < 0 && !isAtTop) || (e.deltaY > 0 && !isAtBottom)) {
+          return;
+        }
+      }
+
+      e.preventDefault();
+      if (wheelCooldown.current) return;
+
+      const threshold = 30;
+      if (Math.abs(e.deltaY) < threshold) return;
+
+      wheelCooldown.current = true;
+      if (e.deltaY > 0) {
+        handleNext();
+      } else {
+        handlePrev();
+      }
+      setTimeout(() => {
+        wheelCooldown.current = false;
+      }, 800);
+    };
+
+    window.addEventListener("wheel", handleWheel, { passive: false });
+    return () => window.removeEventListener("wheel", handleWheel);
   }, [handleNext, handlePrev]);
 
   return (
