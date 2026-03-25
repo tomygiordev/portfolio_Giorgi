@@ -126,6 +126,16 @@ export const translations = {
                     ]
                 },
                 {
+                    title: "Y2K MP3 Ripper",
+                    description: "Aplicación de escritorio para descargar YouTube como MP3 de alta calidad con interfaz retro Y2K. Migrada de Electron a Tauri: 347 MB → 1.4 MB.",
+                    features: [
+                        "Interfaz retro Y2K con animaciones CRT",
+                        "Backend en Rust compilado",
+                        "Control de calidad 320/192/128 kbps",
+                        "Barra de progreso en tiempo real"
+                    ]
+                },
+                {
                     title: "myGatekeeper Game",
                     description: "Juego de control fronterizo con temática de skate donde el jugador debe identificar y dejar pasar a los skaters genuinos.",
                     features: [
@@ -261,6 +271,16 @@ export const translations = {
                         "PDF automation",
                         "Email sending",
                         "Field logging"
+                    ]
+                },
+                {
+                    title: "Y2K MP3 Ripper",
+                    description: "Desktop app to download YouTube as high-quality MP3 with a retro Y2K interface. Migrated from Electron to Tauri: 347 MB → 1.4 MB.",
+                    features: [
+                        "Retro Y2K UI with CRT animations",
+                        "Compiled Rust backend",
+                        "Quality control 320/192/128 kbps",
+                        "Real-time progress bar"
                     ]
                 },
                 {

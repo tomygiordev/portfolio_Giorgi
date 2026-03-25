@@ -33,6 +33,7 @@ import ritual5 from "@/assets/projects/ritual-5.jpg";
 import geocimenta1 from "@/assets/projects/geocimenta-1.jpg";
 import geocimenta2 from "@/assets/projects/geocimenta-2.jpg";
 import gatekeeper1 from "@/assets/projects/gatekeeper-1.jpg";
+import y2kMp3Ripper1 from "@/assets/projects/y2k-mp3-ripper-1.jpg";
 
 // Define a map of project technical details (stack, images, links) that shouldn't change with language
 // The text content (title, description, features) will come from translations based on index
@@ -66,6 +67,12 @@ const projectDetails = [
     images: [geocimenta1, geocimenta2],
     liveUrl: undefined,
     githubUrl: undefined,
+  },
+  {
+    techStack: ["Tauri v2", "Rust", "HTML/CSS/JavaScript"],
+    images: [y2kMp3Ripper1],
+    liveUrl: undefined,
+    githubUrl: "https://github.com/tomygiordev/ytArg",
   },
   {
     techStack: ["QT", "C++"],
