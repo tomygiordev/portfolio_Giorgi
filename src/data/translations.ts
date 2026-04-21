@@ -75,6 +75,7 @@ export const translations = {
             repository: "Repositorio",
             items: [
                 {
+                    id: "wpSteel",
                     title: "WP Steel Frame Software",
                     description: "Software de escritorio para gestión de inventario orientado a la industria del Steel Frame. Permite administrar materiales, stock y movimientos de forma eficiente.",
                     features: [
@@ -85,6 +86,7 @@ export const translations = {
                     ]
                 },
                 {
+                    id: "wpWeb",
                     title: "WP STEEL FRAME WEB",
                     description: "Sitio web corporativo construido con Squarespace, personalizado con HTML, CSS y JavaScript. Cuenta con más de 5 subpáginas y branding profesional.",
                     features: [
@@ -95,6 +97,7 @@ export const translations = {
                     ]
                 },
                 {
+                    id: "nictech",
                     title: "NicTech Store",
                     description: "Plataforma e-commerce completa con landing page de marketing, tienda online, módulo de seguimiento de reparaciones y sección de blog.",
                     features: [
@@ -105,6 +108,40 @@ export const translations = {
                     ]
                 },
                 {
+                    id: "apiarioOs",
+                    title: "Apiario OS",
+                    description: "Sistema operativo web para salas de extracción apícola: gestiona productores, apiarios, turnos, DTEs, tambores, lotes, stock y liquidaciones con trazabilidad completa.",
+                    features: [
+                        "Arquitectura Next.js con Server Actions",
+                        "Modelo relacional SQLite/libSQL",
+                        "Autenticación con sesiones y roles",
+                        "QR scanner, auditoría y liquidaciones"
+                    ]
+                },
+                {
+                    id: "ragy",
+                    title: "Ragy: Tu asistente Académico",
+                    description: "Asistente RAG académico construido con LangChain y una interfaz web en React para consultar planes de estudio y programas de cátedra. Implementa carga de PDFs, chunking configurable, embeddings, búsqueda vectorial y respuestas controladas por contexto.",
+                    features: [
+                        "Frontend conversacional en React",
+                        "Vector store con ChromaDB",
+                        "Retrieval similarity/MMR/threshold",
+                        "Evaluación automática con métricas"
+                    ]
+                },
+                {
+                    id: "integrative",
+                    title: "Integrative",
+                    description: "Sitio multipágina para una agencia digital, con identidad visual propia, páginas comerciales, landings de servicios y showcase de productos SaaS verticales.",
+                    features: [
+                        "Landing responsive de alto contraste",
+                        "Arquitectura estática multipágina",
+                        "Secciones SaaS y servicios",
+                        "Branding, copy y conversión"
+                    ]
+                },
+                {
+                    id: "ritual",
                     title: "RITUAL Red Social",
                     description: "Plataforma de microblogging con funcionalidades sociales completas. Permite publicar, responder, personalizar perfiles y explorar usuarios.",
                     role: "Responsable de todo el Frontend y colaboré en el desarrollo del Backend.",
@@ -116,6 +153,7 @@ export const translations = {
                     ]
                 },
                 {
+                    id: "geocimenta",
                     title: "AppGeoCimenta",
                     description: "Aplicación de registro y automatización para el logging de pilotes. Automatiza el envío de notas de entrega en PDF por email.",
                     features: [
@@ -126,6 +164,7 @@ export const translations = {
                     ]
                 },
                 {
+                    id: "y2kMp3Ripper",
                     title: "Y2K MP3 Ripper",
                     description: "Aplicación de escritorio para descargar YouTube como MP3 de alta calidad con interfaz retro Y2K. Migrada de Electron a Tauri: 347 MB → 1.4 MB.",
                     features: [
@@ -136,6 +175,7 @@ export const translations = {
                     ]
                 },
                 {
+                    id: "gatekeeper",
                     title: "myGatekeeper Game",
                     description: "Juego de control fronterizo con temática de skate donde el jugador debe identificar y dejar pasar a los skaters genuinos.",
                     features: [
@@ -223,6 +263,7 @@ export const translations = {
             repository: "Repository",
             items: [
                 {
+                    id: "wpSteel",
                     title: "WP Steel Frame Software",
                     description: "Desktop software for inventory management oriented to the Steel Frame industry. Efficiently manages materials, stock, and movements.",
                     features: [
@@ -233,6 +274,7 @@ export const translations = {
                     ]
                 },
                 {
+                    id: "wpWeb",
                     title: "WP STEEL FRAME WEB",
                     description: "Corporate website built with Squarespace, customized with HTML, CSS, and JavaScript. Features over 5 subpages and professional branding.",
                     features: [
@@ -243,6 +285,7 @@ export const translations = {
                     ]
                 },
                 {
+                    id: "nictech",
                     title: "NicTech Store",
                     description: "Complete e-commerce platform with marketing landing page, online store, repair tracking module, and blog section.",
                     features: [
@@ -253,6 +296,40 @@ export const translations = {
                     ]
                 },
                 {
+                    id: "apiarioOs",
+                    title: "Apiario OS",
+                    description: "Web operating system for honey extraction rooms: manages producers, apiaries, appointments, DTEs, drums, batches, stock, and settlements with end-to-end traceability.",
+                    features: [
+                        "Next.js architecture with Server Actions",
+                        "SQLite/libSQL relational model",
+                        "Session auth and role management",
+                        "QR scanner, audit log, and settlements"
+                    ]
+                },
+                {
+                    id: "ragy",
+                    title: "Ragy: Your Academic Assistant",
+                    description: "Academic RAG assistant built with LangChain and a React web interface to query study plans and course programs. It implements PDF ingestion, configurable chunking, embeddings, vector search, and context-bounded answers.",
+                    features: [
+                        "Conversational React frontend",
+                        "ChromaDB vector store",
+                        "Similarity/MMR/threshold retrieval",
+                        "Automated evaluation with metrics"
+                    ]
+                },
+                {
+                    id: "integrative",
+                    title: "Integrative",
+                    description: "Multipage website for a digital agency, with a custom visual identity, commercial pages, service landings, and a showcase for vertical SaaS products.",
+                    features: [
+                        "High-contrast responsive landing",
+                        "Static multipage architecture",
+                        "SaaS and service sections",
+                        "Branding, copy, and conversion"
+                    ]
+                },
+                {
+                    id: "ritual",
                     title: "RITUAL Social Network",
                     description: "Microblogging platform with complete social features. Allows posting, replying, profile customization, and user exploration.",
                     role: "Responsible for all Frontend and collaborated on Backend development.",
@@ -264,6 +341,7 @@ export const translations = {
                     ]
                 },
                 {
+                    id: "geocimenta",
                     title: "AppGeoCimenta",
                     description: "Registration and automation app for pile logging. Automates sending delivery notes (PDF) via email.",
                     features: [
@@ -274,6 +352,7 @@ export const translations = {
                     ]
                 },
                 {
+                    id: "y2kMp3Ripper",
                     title: "Y2K MP3 Ripper",
                     description: "Desktop app to download YouTube as high-quality MP3 with a retro Y2K interface. Migrated from Electron to Tauri: 347 MB → 1.4 MB.",
                     features: [
@@ -284,6 +363,7 @@ export const translations = {
                     ]
                 },
                 {
+                    id: "gatekeeper",
                     title: "myGatekeeper Game",
                     description: "Skate-themed border control game where the player must identify and let genuine skaters pass.",
                     features: [

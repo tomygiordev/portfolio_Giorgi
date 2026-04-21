@@ -7,80 +7,93 @@ import ScrollNav from "./ScrollNav";
 import { motion } from "framer-motion";
 import { LanguageProvider, useLanguage } from "../context/LanguageContext";
 
-// Project images
-import wpSteel1 from "@/assets/projects/wp-steel-1.jpg";
-import wpSteel2 from "@/assets/projects/wp-steel-2.jpg";
-import wpSteel3 from "@/assets/projects/wp-steel-3.jpg";
-import wpSteel4 from "@/assets/projects/wp-steel-4.jpg";
-import wpSteel5 from "@/assets/projects/wp-steel-5.jpeg";
-import wpWeb1 from "@/assets/projects/wp-web-1.jpg";
-import wpWeb2 from "@/assets/projects/wp-web-2.jpg";
-import wpWeb3 from "@/assets/projects/wp-web-3.jpg";
-import wpWeb4 from "@/assets/projects/wp-web-4.jpg";
-import wpWeb5 from "@/assets/projects/wp-web-5.jpg";
-import nictech1 from "@/assets/projects/nictech-1.jpg";
-import nictech2 from "@/assets/projects/nictech-2.jpg";
-import nictech3 from "@/assets/projects/nictech-3.jpg";
-import nictech4 from "@/assets/projects/nictech-4.jpg";
-import nictech5 from "@/assets/projects/nictech-5.jpg";
-import nictech6 from "@/assets/projects/nictech-6.jpg";
-import nictech7 from "@/assets/projects/nictech-7.jpg";
-import ritual1 from "@/assets/projects/ritual-1.jpg";
-import ritual2 from "@/assets/projects/ritual-2.jpg";
-import ritual3 from "@/assets/projects/ritual-3.jpg";
-import ritual4 from "@/assets/projects/ritual-4.jpg";
-import ritual5 from "@/assets/projects/ritual-5.jpg";
-import geocimenta1 from "@/assets/projects/geocimenta-1.jpg";
-import geocimenta2 from "@/assets/projects/geocimenta-2.jpg";
-import gatekeeper1 from "@/assets/projects/gatekeeper-1.jpg";
-import y2kMp3Ripper1 from "@/assets/projects/y2k-mp3-ripper-1.jpg";
+const projectImageModules = import.meta.glob<string>(
+  "/src/assets/projects/*.{png,PNG,jpg,JPG,jpeg,JPEG,webp,WEBP,avif,AVIF,gif,GIF}",
+  { eager: true, query: "?url", import: "default" }
+);
 
-// Define a map of project technical details (stack, images, links) that shouldn't change with language
-// The text content (title, description, features) will come from translations based on index
-const projectDetails = [
-  {
+const escapeRegExp = (value: string) => value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+
+const getProjectImages = (imagePrefix: string) => {
+  const imagePattern = new RegExp(
+    `^${escapeRegExp(imagePrefix)}-(\\d+)\\.(png|jpe?g|webp|avif|gif)$`,
+    "i"
+  );
+
+  return Object.entries(projectImageModules)
+    .map(([path, url]) => {
+      const filename = path.split("/").pop() ?? "";
+      const match = filename.match(imagePattern);
+      return match ? { index: Number(match[1]), url } : null;
+    })
+    .filter((image): image is { index: number; url: string } => image !== null)
+    .sort((a, b) => a.index - b.index)
+    .map((image) => image.url);
+};
+
+// Static project details are keyed by id so copy/order changes never desync images or stacks.
+const projectDetails = {
+  wpSteel: {
     techStack: [".NET", "WinForms", "Supabase"],
-    images: [wpSteel1, wpSteel2, wpSteel3, wpSteel4, wpSteel5],
+    imagePrefix: "wp-steel",
     liveUrl: undefined,
     githubUrl: undefined,
   },
-  {
+  wpWeb: {
     techStack: ["Squarespace", "HTML", "CSS", "JavaScript"],
-    images: [wpWeb1, wpWeb2, wpWeb3, wpWeb4, wpWeb5],
+    imagePrefix: "wp-web",
     liveUrl: "https://www.wpconstrucciones.com/",
     githubUrl: undefined,
   },
-  {
+  nictech: {
     techStack: ["React", "Tailwind CSS", "Supabase"],
-    images: [nictech1, nictech2, nictech3, nictech4, nictech5, nictech6, nictech7],
+    imagePrefix: "nictech",
     liveUrl: "https://nictech.vercel.app/",
     githubUrl: "https://github.com/tomygiordev/nictech",
   },
-  {
+  apiarioOs: {
+    techStack: ["Next.js", "TypeScript", "Server Actions", "SQLite/libSQL", "Tailwind CSS"],
+    imagePrefix: "apiario-os",
+    liveUrl: undefined,
+    githubUrl: "https://github.com/tomygiordev/Apiario-OS",
+  },
+  ragy: {
+    techStack: ["Python", "LangChain", "ChromaDB", "Gemini", "React", "FastAPI", "Poetry", "Ollama"],
+    imagePrefix: "ragy",
+    liveUrl: undefined,
+    githubUrl: "https://github.com/0tomi/IA-TP1",
+  },
+  integrative: {
+    techStack: ["HTML", "CSS", "JavaScript", "Responsive Design", "SEO"],
+    imagePrefix: "integrative",
+    liveUrl: "https://integrative.help/",
+    githubUrl: "https://github.com/tomygiordev/Integrative",
+  },
+  ritual: {
     techStack: ["PHP", "MySQL"],
-    images: [ritual1, ritual2, ritual3, ritual4, ritual5],
+    imagePrefix: "ritual",
     liveUrl: undefined,
     githubUrl: "https://github.com/tomygiordev/Ritual_Web",
   },
-  {
+  geocimenta: {
     techStack: ["AppSheet", "AppScript", "JavaScript"],
-    images: [geocimenta1, geocimenta2],
+    imagePrefix: "geocimenta",
     liveUrl: undefined,
     githubUrl: undefined,
   },
-  {
+  y2kMp3Ripper: {
     techStack: ["Tauri v2", "Rust", "HTML/CSS/JavaScript"],
-    images: [y2kMp3Ripper1],
+    imagePrefix: "y2k-mp3-ripper",
     liveUrl: undefined,
     githubUrl: "https://github.com/tomygiordev/ytArg",
   },
-  {
+  gatekeeper: {
     techStack: ["QT", "C++"],
-    images: [gatekeeper1],
+    imagePrefix: "gatekeeper",
     liveUrl: undefined,
     githubUrl: "https://github.com/tomygiordev/myGatekeeper",
   },
-];
+} as const;
 
 const PortfolioContent = () => {
   const [emblaRef, emblaApi] = useEmblaCarousel({
@@ -90,10 +103,10 @@ const PortfolioContent = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const { language, setLanguage, t } = useLanguage();
 
-  // Combine static tech details with translated text content
-  const projects = t.projects.items.map((item, index) => ({
+  const projects = t.projects.items.map((item) => ({
     ...item,
-    ...projectDetails[index]
+    ...projectDetails[item.id as keyof typeof projectDetails],
+    images: getProjectImages(projectDetails[item.id as keyof typeof projectDetails].imagePrefix)
   }));
 
   const TOTAL_SLIDES = 2 + projects.length;
@@ -208,7 +221,7 @@ const PortfolioContent = () => {
 
           {/* Project Slides */}
           {projects.map((project, i) => (
-            <div key={i} className="flex-[0_0_100%] min-w-0">
+            <div key={project.id} className="flex-[0_0_100%] min-w-0">
               <ProjectSlide {...project} index={i + 1} />
             </div>
           ))}

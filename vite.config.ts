@@ -61,7 +61,7 @@ export default defineConfig(({ mode }) => ({
       cacheLocation: undefined,
     }),
   ].filter(Boolean),
-  assetsInclude: ["**/*.PNG"],
+  assetsInclude: ["**/*.PNG", "**/*.JPG", "**/*.JPEG"],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
