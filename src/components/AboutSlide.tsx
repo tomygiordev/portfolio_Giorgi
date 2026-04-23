@@ -7,27 +7,45 @@ import {
     ArrowUpRight,
 } from "lucide-react";
 import {
+    SiSharp,
     SiCplusplus,
+    SiJavascript,
     SiMysql,
+    SiNodedotjs,
+    SiNextdotjs,
     SiPhp,
-    SiHtml5,
     SiDotnet,
     SiPostgresql,
+    SiPython,
+    SiFastapi,
     SiReact,
+    SiRust,
+    SiSupabase,
+    SiTauri,
     SiTailwindcss,
+    SiTypescript,
     SiDocker,
     SiGit,
 } from "react-icons/si";
 import { useLanguage } from "../context/LanguageContext";
 
 const techStack = [
-    { name: "C++", icon: SiCplusplus },
-    { name: "SQL", icon: SiMysql },
-    { name: "PHP", icon: SiPhp },
-    { name: "HTML", icon: SiHtml5 },
-    { name: ".NET", icon: SiDotnet },
-    { name: "PostgreSQL", icon: SiPostgresql },
     { name: "React", icon: SiReact },
+    { name: ".NET", icon: SiDotnet },
+    { name: "Node.js", icon: SiNodedotjs },
+    { name: "Next.js", icon: SiNextdotjs },
+    { name: "TypeScript", icon: SiTypescript },
+    { name: "Python", icon: SiPython },
+    { name: "FastAPI", icon: SiFastapi },
+    { name: "Tauri", icon: SiTauri },
+    { name: "Rust", icon: SiRust },
+    { name: "C++", icon: SiCplusplus },
+    { name: "C#", icon: SiSharp },
+    { name: "Supabase", icon: SiSupabase },
+    { name: "PostgreSQL", icon: SiPostgresql },
+    { name: "MySQL", icon: SiMysql },
+    { name: "PHP", icon: SiPhp },
+    { name: "JavaScript", icon: SiJavascript },
     { name: "Tailwind", icon: SiTailwindcss },
     { name: "Docker", icon: SiDocker },
     { name: "Git", icon: SiGit },
@@ -63,8 +81,8 @@ const AboutSlide = ({ onNavigate }: AboutSlideProps) => {
                                 </h2>
                                 <p className="text-[14px] md:text-[14px] text-white/55 leading-[1.7] mb-3">
                                     {language === 'es'
-                                        ? "Tengo 20 años y estoy terminando la carrera de Análisis de Sistemas. En la facultad mi base fue C++, SQL, PHP y HTML, pero por curiosidad propia me metí de lleno en .NET, PostgreSQL, React, Tailwind y Docker. Incluso sumé una certificación de Cisco en Ciberseguridad para entender mejor la protección de datos."
-                                        : "I am 20 years old and finishing my Systems Analysis degree. At university, my foundation was C++, SQL, PHP, and HTML, but out of my own curiosity, I dove deep into .NET, PostgreSQL, React, Tailwind, and Docker. I even added a Cisco Cybersecurity certification to better understand data protection."
+                                        ? "Tengo 20 años y estoy terminando la carrera de Análisis de Sistemas. Mi base combina desarrollo web moderno con React, Node.js, Next.js y TypeScript; backend y escritorio con .NET, Python, FastAPI, Tauri, Rust, C++ y C#; y datos con Supabase, PostgreSQL y MySQL."
+                                        : "I am 20 years old and finishing my Systems Analysis degree. My foundation combines modern web development with React, Node.js, Next.js, and TypeScript; backend and desktop work with .NET, Python, FastAPI, Tauri, Rust, C++, and C#; and data work with Supabase, PostgreSQL, and MySQL."
                                     }
                                 </p>
                                 <p className="text-[14px] md:text-[14px] text-white/55 leading-[1.7]">
@@ -116,18 +134,18 @@ const AboutSlide = ({ onNavigate }: AboutSlideProps) => {
                                         </p>
                                         <div className="flex flex-wrap gap-x-3 gap-y-1 mt-2">
                                             <button
-                                                onClick={() => onNavigate?.(2)}
+                                                onClick={() => onNavigate?.(1)}
                                                 className="inline-flex items-center gap-1 text-[11px] md:text-[11px] font-medium text-amber-400 hover:text-amber-300 transition-colors"
                                             >
                                                 <ArrowUpRight size={11} />
-                                                {language === 'es' ? "Diseño Web" : "Web Design"}
+                                                {language === 'es' ? "Ver proyectos" : "View projects"}
                                             </button>
                                             <button
                                                 onClick={() => onNavigate?.(1)}
                                                 className="inline-flex items-center gap-1 text-[11px] md:text-[11px] font-medium text-amber-400 hover:text-amber-300 transition-colors"
                                             >
                                                 <ArrowUpRight size={11} />
-                                                {language === 'es' ? "Gestión de Sistema" : "System Management"}
+                                                {language === 'es' ? "Casos completos" : "Full cases"}
                                             </button>
                                         </div>
                                     </div>
@@ -148,11 +166,11 @@ const AboutSlide = ({ onNavigate }: AboutSlideProps) => {
                                         </p>
                                         <div className="mt-2">
                                             <button
-                                                onClick={() => onNavigate?.(5)}
+                                                onClick={() => onNavigate?.(1)}
                                                 className="inline-flex items-center gap-1 text-[11px] md:text-[11px] font-medium text-sky-400 hover:text-sky-300 transition-colors"
                                             >
                                                 <ArrowUpRight size={11} />
-                                                {language === 'es' ? "Ver App" : "View App"}
+                                                {language === 'es' ? "Ver proyecto" : "View project"}
                                             </button>
                                         </div>
                                     </div>

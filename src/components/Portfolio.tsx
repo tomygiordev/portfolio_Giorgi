@@ -2,7 +2,7 @@ import { useState, useCallback, useEffect, useRef } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import HeroSlide from "./HeroSlide";
 import AboutSlide from "./AboutSlide";
-import ProjectSlide from "./ProjectSlide";
+import ProjectsOverview from "./ProjectsOverview";
 import ScrollNav from "./ScrollNav";
 import { motion } from "framer-motion";
 import { LanguageProvider, useLanguage } from "../context/LanguageContext";
@@ -34,55 +34,55 @@ const getProjectImages = (imagePrefix: string) => {
 // Static project details are keyed by id so copy/order changes never desync images or stacks.
 const projectDetails = {
   wpSteel: {
-    techStack: [".NET", "WinForms", "Supabase"],
+    techStack: ["C#", ".NET", "WinForms", "Supabase", "PostgreSQL"],
     imagePrefix: "wp-steel",
     liveUrl: undefined,
     githubUrl: undefined,
   },
   wpWeb: {
-    techStack: ["Squarespace", "HTML", "CSS", "JavaScript"],
+    techStack: ["JavaScript", "HTML", "CSS", "SEO"],
     imagePrefix: "wp-web",
     liveUrl: "https://www.wpconstrucciones.com/",
     githubUrl: undefined,
   },
   nictech: {
-    techStack: ["React", "Tailwind CSS", "Supabase"],
+    techStack: ["React", "Node.js", "Supabase", "Tailwind CSS", "JavaScript"],
     imagePrefix: "nictech",
     liveUrl: "https://nictech.vercel.app/",
     githubUrl: "https://github.com/tomygiordev/nictech",
   },
   apiarioOs: {
-    techStack: ["Next.js", "TypeScript", "Server Actions", "SQLite/libSQL", "Tailwind CSS"],
+    techStack: ["Next.js", "Node.js", "TypeScript", "Server Actions", "SQLite/libSQL", "Tailwind CSS"],
     imagePrefix: "apiario-os",
     liveUrl: undefined,
     githubUrl: "https://github.com/tomygiordev/Apiario-OS",
   },
   ragy: {
-    techStack: ["Python", "LangChain", "ChromaDB", "Gemini", "React", "FastAPI", "Poetry", "Ollama"],
+    techStack: ["Python", "FastAPI", "LangChain", "ChromaDB", "React", "Ollama", "Poetry", "Gemini"],
     imagePrefix: "ragy",
     liveUrl: undefined,
     githubUrl: "https://github.com/0tomi/IA-TP1",
   },
   integrative: {
-    techStack: ["HTML", "CSS", "JavaScript", "Responsive Design", "SEO"],
+    techStack: ["JavaScript", "HTML", "CSS", "SEO"],
     imagePrefix: "integrative",
     liveUrl: "https://integrative.help/",
     githubUrl: "https://github.com/tomygiordev/Integrative",
   },
   ritual: {
-    techStack: ["PHP", "MySQL"],
+    techStack: ["PHP", "MySQL", "JavaScript", "HTML", "CSS"],
     imagePrefix: "ritual",
     liveUrl: undefined,
     githubUrl: "https://github.com/tomygiordev/Ritual_Web",
   },
   geocimenta: {
-    techStack: ["AppSheet", "AppScript", "JavaScript"],
+    techStack: ["Google Apps Script", "JavaScript", "AppSheet"],
     imagePrefix: "geocimenta",
     liveUrl: undefined,
     githubUrl: undefined,
   },
   y2kMp3Ripper: {
-    techStack: ["Tauri v2", "Rust", "HTML/CSS/JavaScript"],
+    techStack: ["Tauri v2", "Rust", "JavaScript", "HTML", "CSS"],
     imagePrefix: "y2k-mp3-ripper",
     liveUrl: undefined,
     githubUrl: "https://github.com/tomygiordev/ytArg",
@@ -109,7 +109,7 @@ const PortfolioContent = () => {
     images: getProjectImages(projectDetails[item.id as keyof typeof projectDetails].imagePrefix)
   }));
 
-  const TOTAL_SLIDES = 2 + projects.length;
+  const TOTAL_SLIDES = 3;
 
   const onSelect = useCallback(() => {
     if (!emblaApi) return;
@@ -219,12 +219,10 @@ const PortfolioContent = () => {
             <HeroSlide onAboutClick={() => scrollToSlide(TOTAL_SLIDES - 1)} />
           </div>
 
-          {/* Project Slides */}
-          {projects.map((project, i) => (
-            <div key={project.id} className="flex-[0_0_100%] min-w-0">
-              <ProjectSlide {...project} index={i + 1} />
-            </div>
-          ))}
+          {/* Projects Overview */}
+          <div className="flex-[0_0_100%] min-w-0">
+            <ProjectsOverview projects={projects} />
+          </div>
 
           {/* About Slide */}
           <div className="flex-[0_0_100%] min-w-0">

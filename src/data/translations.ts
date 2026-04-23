@@ -88,7 +88,7 @@ export const translations = {
                 {
                     id: "wpWeb",
                     title: "WP STEEL FRAME WEB",
-                    description: "Sitio web corporativo construido con Squarespace, personalizado con HTML, CSS y JavaScript. Cuenta con más de 5 subpáginas y branding profesional.",
+                    description: "Sitio web corporativo con estructura multipágina, personalización visual con HTML, CSS y JavaScript, diseño responsive y branding profesional.",
                     features: [
                         "Más de 5 subpáginas",
                         "Branding profesional",
@@ -276,7 +276,7 @@ export const translations = {
                 {
                     id: "wpWeb",
                     title: "WP STEEL FRAME WEB",
-                    description: "Corporate website built with Squarespace, customized with HTML, CSS, and JavaScript. Features over 5 subpages and professional branding.",
+                    description: "Corporate multipage website with custom visual work in HTML, CSS, and JavaScript, responsive design, and professional branding.",
                     features: [
                         "Over 5 subpages",
                         "Professional branding",

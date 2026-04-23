@@ -204,4 +204,132 @@
     background: rgba(255, 255, 255, 0.05);
     border-color: rgba(139, 92, 246, 0.15);
   }
+
+  .project-overview-meta {
+    @apply flex flex-col gap-4 rounded-lg border border-white/[0.06] bg-white/[0.025] p-4 sm:flex-row sm:items-center;
+  }
+
+  .project-overview-grid {
+    @apply grid gap-3 sm:grid-cols-2 xl:grid-cols-5;
+  }
+
+  .project-overview-card {
+    @apply flex min-h-[325px] flex-col overflow-hidden rounded-lg border border-white/[0.06] bg-white/[0.028] text-left transition-all duration-300;
+  }
+
+  .project-overview-card:hover {
+    background: rgba(255, 255, 255, 0.055);
+    border-color: rgba(139, 92, 246, 0.2);
+    transform: translateY(-3px);
+    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.28);
+  }
+
+  .project-overview-media {
+    @apply relative flex h-32 items-center justify-center overflow-hidden bg-white/[0.025];
+  }
+
+  .project-overview-media img {
+    filter: saturate(0.88) contrast(1.04);
+    transform: scale(1.01);
+    transition: transform 0.5s ease, filter 0.5s ease;
+  }
+
+  .project-overview-card:hover .project-overview-media img {
+    filter: saturate(1.08) contrast(1.04);
+    transform: scale(1.06);
+  }
+
+  .project-overview-number {
+    @apply absolute left-3 top-3 rounded-md border border-white/10 bg-black/55 px-2 py-1 text-[10px] font-bold tracking-[0.18em] text-white/70 backdrop-blur-md;
+  }
+
+  .project-stack-chip {
+    @apply inline-flex items-center rounded-md border border-white/[0.07] bg-white/[0.04] px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.12em] text-white/50;
+  }
+
+  .project-stack-chip.compact {
+    @apply px-2 py-0.5 text-[9px] tracking-[0.1em] text-white/50;
+  }
+
+  .project-stack-chip.featured {
+    color: hsl(var(--violet-end));
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(192, 132, 252, 0.1));
+    border-color: rgba(192, 132, 252, 0.42);
+    box-shadow: 0 0 18px rgba(139, 92, 246, 0.12);
+  }
+
+  .project-overview-card:hover .project-stack-chip.featured {
+    color: white;
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.34), rgba(192, 132, 252, 0.18));
+    border-color: rgba(192, 132, 252, 0.62);
+  }
+
+  .project-detail-shell {
+    @apply relative rounded-lg border border-white/[0.08] bg-[#0d0f0f] shadow-2xl;
+    background:
+      radial-gradient(circle at 18% 8%, rgba(139, 92, 246, 0.16), transparent 34%),
+      radial-gradient(circle at 86% 78%, rgba(34, 197, 94, 0.07), transparent 26%),
+      #0d0f0f;
+  }
+
+  .project-detail-image {
+    @apply relative flex aspect-video w-full items-center justify-center overflow-hidden rounded-lg border border-white/[0.07] bg-black/35;
+  }
+
+  .gallery-arrow {
+    @apply absolute top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-white/10 bg-black/55 text-white/65 backdrop-blur-md transition-all;
+  }
+
+  .gallery-arrow:hover {
+    @apply bg-white/10 text-white;
+    border-color: rgba(192, 132, 252, 0.42);
+  }
+
+  .gallery-counter {
+    @apply absolute bottom-3 left-1/2 -translate-x-1/2 rounded-full border border-white/10 bg-black/55 px-3 py-1 text-[11px] font-bold text-white/70 backdrop-blur-md;
+  }
+
+  .project-thumb {
+    @apply aspect-video overflow-hidden rounded-md border border-white/[0.06] bg-white/[0.03] opacity-50 transition;
+  }
+
+  .project-thumb:hover,
+  .project-thumb.is-active {
+    @apply opacity-100;
+    border-color: rgba(139, 92, 246, 0.5);
+  }
+
+  .project-detail-feature {
+    @apply flex gap-2 rounded-lg border border-white/[0.06] bg-white/[0.025] px-3 py-2 text-[12px] leading-relaxed text-white/60;
+  }
+
+  .project-action {
+    @apply inline-flex items-center gap-2 rounded-lg border border-white/10 bg-white/[0.04] px-4 py-2.5 text-[13px] font-bold text-white transition-all active:scale-95;
+  }
+
+  .project-action:hover {
+    @apply bg-white/[0.09];
+  }
+
+  .project-action.primary {
+    @apply border-white bg-white text-black;
+  }
+
+  .project-action.primary:hover {
+    @apply bg-white/90;
+  }
+
+  @media (max-width: 767px) {
+    .project-overview-grid {
+      @apply grid-cols-1;
+    }
+
+    .project-overview-card {
+      min-height: 0;
+    }
+
+    .project-overview-media {
+      height: 10.5rem;
+    }
+  }
 }
