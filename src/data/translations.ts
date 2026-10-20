@@ -17,8 +17,8 @@ export const translations = {
                 current: "Actual",
                 items: [
                     {
-                        title: "Desarrollador Freelance",
-                        period: "2023 - Presente",
+                        title: "WP Steel Frame",
+                        period: "Dic 2023 - Actualidad",
                         description: "Desarrollador integral con total libertad de arquitectura. Selección de stack tecnológico, diseño de bases de datos y desarrollo end-to-end de soluciones web y de escritorio."
                     },
                     {
@@ -205,8 +205,8 @@ export const translations = {
                 current: "Current",
                 items: [
                     {
-                        title: "Freelance Developer",
-                        period: "2023 - Present",
+                        title: "WP Steel Frame",
+                        period: "Dec 2023 - Present",
                         description: "Comprehensive developer with full architectural freedom. Tech stack selection, database design, and end-to-end development of web and desktop solutions."
                     },
                     {

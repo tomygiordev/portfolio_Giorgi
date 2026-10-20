@@ -128,6 +128,9 @@ const AboutSlide = ({ onNavigate }: AboutSlideProps) => {
                                             <span className="text-[9px] px-1.5 py-0.5 rounded-md bg-amber-500/20 text-amber-400 border border-amber-500/30 font-bold uppercase tracking-wider">
                                                 {t.about.experience.current}
                                             </span>
+                                            <span className="text-[11px] text-white/40 font-medium">
+                                                {t.about.experience.items[0].period}
+                                            </span>
                                         </p>
                                         <p className="text-[12px] md:text-[12px] text-white/40 mt-0.5 leading-relaxed">
                                             {t.about.experience.items[0].description}
